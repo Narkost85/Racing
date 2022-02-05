@@ -1,0 +1,227 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.game {
+    overflow: hidden;
+    position: relative;
+}
+.game::after{
+    content: '';
+    position: absolute;
+    inset:0;
+    background: url("kanfeti.gif") no-repeat center/cover;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+.game.kanfet::after{
+    opacity: 1;
+    visibility: visible;
+}
+
+.game .landscape{
+    width: 150%;
+    height: 200px;
+    background: url("background.jpg");
+    background-repeat: repeat;
+    /* background-position-x: 0; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.game .landscape.active{
+    animation:land 1s linear infinite;
+}
+@keyframes land{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-700px);
+    }
+}
+
+.game .roadblock{
+    height: calc(100vh - 200px);
+}
+
+.game .roadblock .road{
+    height: 25%;
+    border-bottom: 5px groove;
+    background: url("finish.jpg") no-repeat 100% 11% / 4%, url("road.jpg") repeat 0 -7% / 120%;
+    background-blend-mode: screen;
+    position: relative;
+    
+}
+.game .roadblock.active .road{
+    animation: move 2s linear infinite;
+}
+@keyframes move {
+    0% {
+        background: url("finish.jpg") no-repeat 100% 11% / 4%, url("road.jpg") repeat 0 -7% / 120%;
+    }
+    100%{
+        background: url("finish.jpg") no-repeat 100% 11% / 4%, url("road.jpg") repeat 260% -7% / 120%;
+    }
+}
+.game .roadblock .road img{
+    height: 85px;
+    margin-top: 20px;
+    transform: translateX(-250px);
+    animation: cars 3s linear forwards;
+
+}
+@keyframes cars {
+    to{transform: translateX(0);}
+}
+.game .roadblock .road .armenia{
+    width: 60px;
+    height: 100px;
+    outline: none;
+    border:none;
+    background-image: url("FA.png");
+    background-size: cover;
+    position: absolute;
+    left: 96%;
+    top: 15px;
+    opacity: 0;
+    visibility: hidden;
+  
+}
+.game .roadblock .road .usa{
+    width: 60px;
+    height: 100px;
+    outline: none;
+    border:none;
+    background-image: url("FUS.png");
+    background-size: cover;
+    position: absolute;
+    left: 96%;
+    top: 15px;
+    opacity: 0;
+    visibility: hidden;
+  
+}
+.game .roadblock .road .russia{
+    width: 60px;
+    height: 100px;
+    outline: none;
+    border:none;
+    background-image: url("FRUS.png");
+    background-size: cover;
+    position: absolute;
+    left: 96%;
+    top: 15px;
+    opacity: 0;
+    visibility: hidden;
+  
+}
+.game .roadblock .road .brazilia{
+    width: 60px;
+    height: 100px;
+    outline: none;
+    border:none;
+    background-image: url("FBRAZ.jpg");
+    background-size: cover;
+    position: absolute;
+    left: 96%;
+    top: 15px;
+    opacity: 0;
+    visibility: hidden;
+  
+}
+.game .landscape button{
+    outline: none;
+    position: absolute;
+    border: 2px solid red;
+    background-color: orange;
+    padding: 12px 35px;
+    color:white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.5s;
+    opacity: 0;
+    left: 30%;
+}
+.game .landscape button:hover{
+    background-color: yellowgreen;
+    color:green;
+    border: 4px solid green ;
+    padding: 18px 45px;
+    font-weight: bold;
+}
+.game .landscape h2{
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%,-50%);
+    font-size: 90px;
+    color:red;
+    font-weight: bolder;
+    opacity: 0;
+    transition: .4s;
+    visibility: hidden;
+}
+.game .WINNER{
+    width: 35%;
+    height: 45%;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border: 5px groove white;
+    background:rgba(0, 0, 0, .8);
+    opacity: 0;
+    visibility: hidden;
+    transition: 1s;
+    z-index: 1;
+}
+.game .WINNER .win {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    height: 25%;
+    justify-content: center;
+    font-size: 29px;
+    font-family: cursive;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.game .WINNER .win img {
+    height: 70px;
+    transform: rotate(90deg) translateX(-9px) translateY(-41px);
+    margin-top: 22px;
+}
+.game .WINNER .win:nth-child(2) img {
+    transform: rotate(90deg) translateX(-9px) translateY(-41px) scaleY(-1);
+}
+
+.game .WINNER .win:nth-child(3) img {
+    transform: rotate(90deg) translateX(-9px) translateY(-41px) scaleY(-1);
+}
+.game .WINNER button{
+    outline: none;
+    border: 2px solid silver ;
+    border-radius: 20px;
+    padding: 8px 30px;
+    color: red;
+    background-color: slategray;
+    font-size: 24px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+.game .WINNER button:hover{
+    background-color: red ;
+    color: slategray;
+    padding: 10px 35px;
+}
